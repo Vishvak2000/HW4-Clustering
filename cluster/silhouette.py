@@ -27,7 +27,7 @@ class Silhouette:
         n = X.shape[0]
         silhouette_scores = np.zeros(n)
         for i in range(n):
-            a = np.mean(cdist(X[y == y[i]], [X[i]])) # get pariwse distances between point X[i] and all other points with the same label
+            a = np.mean(cdist(X[y == y[i]], [X[i]])) # get mean pariwse distances between point X[i] and all other points with the same label
             b = np.min([np.mean(cdist(X[y == j], [X[i]])) for j in np.unique(y) if j != y[i]]) 
             # for every (unique), label that isnt the same label as the point, get the mean distance of that point and all other points with NOT that label
             silhouette_scores[i] = (b - a) / max(a, b) # just the formula
